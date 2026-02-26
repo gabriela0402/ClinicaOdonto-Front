@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --azul-claro: #567c8d;
+    --azul-escuro: #2f4156;
+    --azul-clarissimo: #c8d9e6;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    padding-top: 80px;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+
+/* navbar */
+nav {
+    position: fixed;
+    top: 0;           /* Fixa no topo absoluto */
+    left: 0;          /* Fixa na esquerda absoluta */
+    z-index: 1000;    /* Garante que fique acima de tudo */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--azul-claro);
+    padding: 0 5%;    /* Padding lateral */
+    height: 80px;     /* Altura fixa ajuda a calcular o padding do body */
+    border-radius: 0 0 0 50px; /* Navs fixas geralmente não têm border-radius para não vazar fundo */
+}
+
+.logo a {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.ul{
+    display: flex;
+    align-items: center;
+}
+
+.ul li{
+    margin: 0 20px;
+    font-size: 15px; 
+}
+
+.ul li a{
+    color: white;
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: 20px;
+}
+
+.btn-login li {
+    margin: 0;
+}
+#btn-criar{
+    background-color: var(--azul-escuro);
+    color: white;
+}
+
+button {
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+/* Ajuste no main para permitir que a lista cresça verticalmente se houver muitos itens */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Mudado para flex-start para a lista começar no topo do main */
+    padding: 40px 0;
+}
+
+/* Container da lista */
+.lista-consultas {
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaço entre cada card de consulta */
+}
+
+/* O item (details) */
+.consulta-item {
+    background-color: white;
+    border: 1px solid var(--azul-escuro);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Cabeçalho da consulta (summary) */
+.consulta-item summary {
+    padding: 20px;
+    list-style: none;
+    cursor: pointer;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-hora {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+
+/* Conteúdo interno quando aberto */
+.consulta-conteudo {
+    background-color: rgba(238, 238, 238, 0.925);
+    padding: 25px;
+    color: var(--azul-escuro);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    animation: slideDown 0.3s ease-out;
+}
+
+.consulta-conteudo p {
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.consulta-conteudo strong {
+    color: var(--azul-escuro);
+    font-weight: 700;
+}
+
+
+
+footer{
+    background-color: var(--azul-escuro);
+    padding: 50px;
+}
+footer .container{
+    display: flex;
+    color: white;
+}
+footer .container ul{
+    width: 25%;
+}
+footer .container h3{
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+footer .container .redes-sociais img{
+    margin-right: 10px;
+}
+footer .container ul > p{
+    margin-bottom: 40px;
+}
+footer .container li{
+    margin: 10px 0;
+}
+footer .container a{
+    color: white;
+}
+.mensagem {
+    padding: 50px 0;
+    text-align: center;
+}
+.btn-editar{
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    background-color: #2f4156;
+    color: white;
+}
+.btn-excluir{
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    background-color: #a02424;
+    color: white;
+}
