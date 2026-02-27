@@ -108,13 +108,16 @@ main {
 /* O item (details) */
 .consulta-item {
     background-color: white;
-    border: 1px solid var(--azul-escuro);
+    border: 0.5px solid var(--azul-escuro);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
-
+.consulta-item:hover{
+    transform: scale(1.04);
+    background-color: rgb(240, 240, 240);
+}
 /* Cabeçalho da consulta (summary) */
 .consulta-item summary {
     padding: 20px;
@@ -165,22 +168,36 @@ footer .container{
 }
 footer .container ul{
     width: 25%;
+    text-align: center;
 }
 footer .container h3{
+    margin-left: 10px;
     margin-bottom: 16px;
     font-weight: 600;
 }
 footer .container .redes-sociais img{
     margin-right: 10px;
 }
-footer .container ul > p{
-    margin-bottom: 40px;
-}
+
 footer .container li{
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 footer .container a{
     color: white;
+}
+.ul .item-nav:hover{
+    background-color: white;
+    border-radius: 5px;
+    color: var(--azul-escuro);
+    width: 30px;
+    font-size: 15px; 
+    padding: 10px;
+    transition: 0.3s;
+}
+.btn-marcar:hover{
+    background-color: var(--azul-clarissimo);
+    color: var(--azul-claro);
+    transition: 0.3s;
 }
 .mensagem {
     padding: 50px 0;
@@ -205,4 +222,29 @@ footer .container a{
     font-weight: 500;
     background-color: #a02424;
     color: white;
+}
+.btn-config{
+    width: 30px;
+    height: 30px;
+}
+input {
+    width: 100%;
+    max-width: 900px; /* AQUI você define o tamanho final. Coloquei 1000px para ficar bem largo */
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 0; 
+    display: block;    /* Limita o tamanho */
+    margin-bottom: 20px;
+}
+.ul .item-nav:hover{
+    background-color: white;
+    border-radius: 5px;
+    color: var(--azul-escuro);
+    width: 30px;
+    font-size: 15px; 
+    padding: 10px;
+    transition: 0.3s;
 }

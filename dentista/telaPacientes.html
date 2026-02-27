@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/receitasDentista.css">
+    <link rel="stylesheet" href="../css/telaPaciente.css">
     <title>Odonto Excellence</title>
 </head>
 
@@ -24,49 +24,49 @@
             </ul>
 
             <div class="btn-login">
-                <a href="../dentista/configDentista.html"><img class="btn-config" src="../img/configuracao.png"
-                        alt="Configurações"></a>
+                <a href="../dentista/configDentista.html">
+                    <img class="btn-config" src="../img/configuracao.png" alt="Configurações">
+                </a>
             </div>
         </nav>
     </header>
+
     <section class="mensagem">
         <div class="container">
-            <h1>Verifique suas Receitas!</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius pariatur quam vitae voluptatem. Sit
-                dignissimos beatae iure accusamus atque unde ratione labore necessitatibus voluptatum, amet qui quas?
-                Reiciendis, delectus nam.</p>
+            <h1>Pacientes</h1>
+            <p>Tenha acesso completo e detalhado a todos os pacientes cadastrados no sistema Odonto Excellence! Aqui, você pode gerenciar históricos clínicos, visualizar prescrições recentes, acompanhar o andamento de tratamentos e organizar sua agenda de forma prática e segura, garantindo um atendimento de excelência e um cuidado personalizado para cada sorriso.</p>
         </div>
     </section>
-    <main>
-        <div class="lista-consultas">
-            <input type="text" placeholder="Procure receitas pelo ID do dentista">
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">Consulta 1 - 23/02/2026</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Prescrição:</strong> Lorem ipsum do</p>
-                    <p><strong>Remédio:</strong>rmeédifow</p>
-                    <button class="btn-editar">Editar</button>
-                    <button class="btn-excluir">Excluir</button>
-                    <a href="consultasPaciente.html"> Ver consulta</a>
-                </div>
-            </details>
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">Consulta 2 - 24/02/2026</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Prescrição:</strong> Lorem ipsum do</p>
-                    <p><strong>Remédio:</strong>rmeédifow</p>
-                    <button class="btn-editar">Editar</button>
-                    <button class="btn-excluir">Excluir</button>
-                    <a href="consultasPaciente.html"> Ver consulta</a>
-                </div>
-            </details>
 
+    <main class="secao-pacientes">
+        <div class="container-flex-col">
+            <div class="header-lista">
+                <h2>Todos os pacientes</h2>
+                <input type="text" placeholder="Procure paciente pelo ID ">
+            </div>
+
+            <div class="grid-pacientes">
+                <div class="card-paciente">
+                    <div class="card-info">
+                        <h3>Julia Maria</h3>
+                        <p><span>ID:</span> #001</p>
+                        <p><span>Email:</span> João Silva dos Santos</p>
+                    </div>
+                    <div class="card-acoes">
+                    </div>
+                </div>
+
+                <div class="card-paciente">
+                    <div class="card-info">
+                        <h3>Julia Maria</h3>
+                        <p><span>ID:</span> #001</p>
+                        <p><span>Email:</span> João Silva dos Santos</p>
+                    </div>
+                    <div class="card-acoes">
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
 

@@ -113,7 +113,7 @@ input {
     border: 0.5px solid rgba(0, 0, 0, 0.178);
     outline: none;
     color: #00000098;
-    background-color: #f1f1f1;
+    background-color: #fffefe;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     margin: 10px;
@@ -170,11 +170,32 @@ main .container .form-entrar p{
     color: white;
 }
 
-/* Garante que o form use flex quando o JS mudar o display */
+
 form {
     display: flex;
     flex-direction: column;
 }
-a{
+.voltar:hover{
     color: var(--azul-escuro);
+    transition: 0.3s;
+}
+main .container .btn-entrar:hover {
+    background-color: var(--azul-escuro); 
+    border-color: var(--azul-escuro);
+    transition: 0.3s;
+}
+main .container .btn-entrar:hover a {
+    color: white !important;
+    transition: 0.3s;
+}
+main .container .btn-enviar:hover{
+    background-color: var(--azul-clarissimo);
+    color: var(--azul-escuro);
+    transition: 0.3s;
+}
+.btn-entrar a {
+    text-decoration: none;
+    color: inherit; 
+    display: block;
+    width: 100%;
 }

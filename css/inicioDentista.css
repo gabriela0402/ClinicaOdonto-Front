@@ -26,29 +26,39 @@ html{
 }
 
 /* navbar */
-nav{
+nav {
     position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Distribui os 3 blocos */
     align-items: center;
     background-color: var(--azul-claro);
-    padding: 20px 5%;
+    padding: 0 5%;
+    height: 80px;
     border-radius: 0 0 0 50px;
 }
-
+.logo {
+    min-width: 300px; 
+    display: flex;
+    align-items: center;
+}
 .logo a {
     font-size: 30px;
     font-weight: bold;
     color: white;
+    white-space: nowrap; 
 }
 
-.ul{
+.ul {
     display: flex;
     align-items: center;
+    flex-grow: 1;        
+    justify-content: center; 
 }
-
-.ul li{
+.ul li {
     margin: 0 20px;
     font-size: 15px; 
 }
@@ -60,8 +70,14 @@ nav{
 .btn-login {
     display: flex;
     align-items: center;
-    gap: 7px;
-    margin-left: 20px;
+    justify-content: flex-end; 
+    min-width: 300px; /* IMPORTANTE: Deve ser igual ao da .logo */          
+}
+
+.btn-config {
+    width: 30px;
+    height: 30px;
+    display: block;
 }
 
 .btn-login li {
@@ -188,8 +204,7 @@ h1{
 }
 
 .main-text {
-    width: auto;          
-    max-width: 600px;    
+    text-align: center; /* Isso centraliza o H1 e o P */
 }
 
 .esp-img {
@@ -204,12 +219,12 @@ h1{
     border-radius: 50px 0 50px 0;
     border: 1px solid var(--azul-escuro);
 }
-.main-text div{
+.main-text div {
     display: flex;
+    justify-content: center; /* Isso centraliza o botão horizontalmente */
     align-items: center;
     margin-top: 20px;
 }
-
 /* footer */
 footer{
     background-color: var(--azul-escuro);
@@ -221,20 +236,34 @@ footer .container{
 }
 footer .container ul{
     width: 25%;
+    text-align: center;
 }
 footer .container h3{
+    margin-left: 10px;
     margin-bottom: 16px;
     font-weight: 600;
 }
 footer .container .redes-sociais img{
     margin-right: 10px;
 }
-footer .container ul > p{
-    margin-bottom: 40px;
-}
+
 footer .container li{
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 footer .container a{
     color: white;
+}
+.ul .item-nav:hover{
+    background-color: white;
+    border-radius: 5px;
+    color: var(--azul-escuro);
+    width: 30px;
+    font-size: 15px; 
+    padding: 10px;
+    transition: 0.3s;
+}
+.btn-marcar:hover{
+    background-color: var(--azul-clarissimo);
+    color: var(--azul-claro);
+    transition: 0.3s;
 }

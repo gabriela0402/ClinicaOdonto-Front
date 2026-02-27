@@ -7,6 +7,7 @@
     text-decoration: none;
     list-style: none;
 }
+
 body{
     font-family: "Poppins", sans-serif;
 }
@@ -24,6 +25,7 @@ body {
 }
 
 nav {
+    position: fixed;
     background-color: var(--azul-claro);
     padding: 20px;
     border-radius: 0 0 50px 0;
@@ -82,6 +84,7 @@ main .mensagem-entrar {
 }
 
 main .form-entrar {
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -92,35 +95,7 @@ form {
     display: flex;
     flex-direction: column;
 }
-main .container .btn-entrar{
-    background-color: transparent;
-    border: 1px solid var(--azul-escuro);
-    padding: 10px;
-    font-family: "Poppins", sans-serif;
-    border-radius: 10px;
-    color: var(--azul-escuro);
-    margin-top: 20px;
-    width: 100px;
-    cursor: pointer;
-}
-main .container .btn-entrar:hover {
-    background-color: var(--azul-escuro) ;
-    color: white ;
-    transition: 0.3s;
-}
-main .container .btn-entrar:hover a {
-    color: white ;
-    transition: 0.3s;
-}
-main .container .btn-enviar:hover{
-    background-color: var(--azul-clarissimo);
-    color: var(--azul-escuro);
-    transition: 0.3s;
-}
-.voltar:hover{
-    color: black;
-    transition: 0.3s;
-}
+
 input {
     width: 600px;
     padding: 15px;
@@ -133,6 +108,12 @@ input {
     transition: box-shadow 0.3s ease;
     margin: 10px;
 }
+.btns-forms {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 15px;              /* Dá um espaço entre o botão Editar e Sair */
+    width: 100%;            /* Garante que a div ocupe a largura do form */
+}
 
 main .container .btn-enviar{
     background-color: var(--azul-claro);
@@ -144,6 +125,42 @@ main .container .btn-enviar{
     margin-top: 20px;
     width: 100px;
     cursor: pointer;
+}
+main .container .btn-enviar:hover{
+    background-color: var(--azul-clarissimo);
+    color: var(--azul-escuro);
+}
+main .container .btn-sair{
+    background-color: white;
+    border: none;
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+    color: var(--azul-escuro);
+    border: 1px solid var(--azul-escuro);
+    margin-top: 20px;
+    width: 100px;
+    cursor: pointer;
+}
+main .container .btn-sair:hover{
+    background-color: var(--azul-escuro);
+    color:white;
+}
+.excluir-btn {
+    background-color: rgb(161, 29, 29);
+    border: none;
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+    color: white;
+    margin: 20px auto 0 auto; /* O 'auto' nas laterais centraliza elementos block/button */
+    width: 200px;
+    cursor: pointer;
+    display: block;           /* Garante que a margem auto funcione */
+}
+.excluir-btn:hover{
+    background-color: rgb(238, 86, 86);
+    color: rgb(95, 26, 26);
 }
 
 h1{
@@ -158,10 +175,13 @@ main .container .form-entrar p{
 }
 
 
-.btn-entrar a {
-    color: inherit; /* Herda a cor inicial do botão */
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    height: 100%;
+
+/* Garante que o form use flex quando o JS mudar o display */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.voltar:hover{
+    color: var(--azul-escuro);
 }
