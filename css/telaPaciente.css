@@ -27,22 +27,21 @@ html{
 }
 
 
-/* navbar */
+/* Nav */
 nav {
     position: fixed;
-    top: 0;           /* Fixa no topo absoluto */
-    left: 0;          /* Fixa na esquerda absoluta */
-    z-index: 1000;    /* Garante que fique acima de tudo */
+    top: 0;          
+    left: 0;      
+    z-index: 1000;  
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--azul-claro);
-    padding: 0 5%;    /* Padding lateral */
-    height: 80px;     /* Altura fixa ajuda a calcular o padding do body */
-    border-radius: 0 0 0 50px; /* Navs fixas geralmente não têm border-radius para não vazar fundo */
+    padding: 0 5%;    
+    height: 80px;    
+    border-radius: 0 0 0 50px; 
 }
-
 .logo a {
     font-size: 30px;
     font-weight: bold;
@@ -62,35 +61,39 @@ nav {
 .ul li a{
     color: white;
 }
-
-/* Ajuste no main para permitir que a lista cresça verticalmente se houver muitos itens */
-main {
-    justify-content: center;
-    align-items: flex-center; /* Mudado para flex-start para a lista começar no topo do main */
-    padding: 40px 0;
+.menu-icon {
+    display: none;
+    cursor: pointer;
 }
 
-/* Container da lista */
+.menu-icon img {
+    width: 35px;
+}
+/* Final nav */
+/* Seção mensagem */
+.mensagem {
+    padding: 30px ;
+    text-align: center;
+}
+/* Final seção mensagem */
+/* Main */
+main {
+    justify-content: center;
+    align-items: flex-center;
+    padding: 40px 0;
+}
+input {
+    display: block;  
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;   
+}
 .lista-consultas {
     width: 90%;
     max-width: 900px;
     display: flex;
-    gap: 15px; /* Espaço entre cada card de consulta */
+    gap: 15px; /
 }
-
-/* O item (details) */
-
-
-/* Cabeçalho da consulta (summary) */
-
-.data-hora {
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-
-
-/* Conteúdo interno quando aberto */
 .consulta-conteudo {
     background-color: rgba(238, 238, 238, 0.925);
     padding: 25px;
@@ -99,7 +102,6 @@ main {
     animation: slideDown 0.3s ease-out;
     width: 500px;
 }
-
 .consulta-conteudo p {
     margin-bottom: 12px;
     font-size: 1rem;
@@ -108,13 +110,96 @@ main {
     color: black;
     font-size: 15px;
 }
-
 .consulta-conteudo strong {
     color: var(--azul-escuro);
     font-weight: 700;
 }
+.btn-editar{
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    background-color: #2f4156;
+    color: white;
+}
+.btn-excluir{
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    background-color: #a02424;
+    color: white;
+}
+.btn-config{
+    width: 30px;
+    height: 30px;
+}
+.container-flex-col {
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
 
+.header-lista {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+    text-align: center;    
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.header-lista input {
+    width: 100%;
+    max-width: 1000px; 
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 0; 
+    display: block;
+}
 
+.grid-pacientes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+.card-paciente {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-paciente:hover{
+    transform: scale(1.05);
+    transition: 0.3;
+}
+.card-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+.mobile-only {
+    display: none;
+}
+/* Final main */
+/* Footer */
 footer{
     background-color: var(--azul-escuro);
     padding: 50px;
@@ -142,226 +227,82 @@ footer .container li{
 footer .container a{
     color: white;
 }
-.mensagem {
-    padding: 30px ;
-    text-align: center;
-}
-.btn-editar{
-    padding: 8px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: none;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    background-color: #2f4156;
-    color: white;
-}
-.btn-excluir{
-    padding: 8px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: none;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    background-color: #a02424;
-    color: white;
-}
-.btn-config{
-    width: 30px;
-    height: 30px;
-}
+/* Final footer */
 
-/* Garante que o container interno ocupe a largura correta */
-.container-flex-col {
-    width: 90%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column; /* H2 em cima, Lista embaixo */
-    gap: 20px;
-}
+/* Responsividade */
+@media(max-width: 960px) {
+    .menu-icon {
+        display: block !important;
+        z-index: 2001;
+    }
 
-/* Alinhamento do Título */
-.container-flex-col h2 {
-    text-align: left; /* Ou center, se preferir no meio */
-    margin-top: 20px;
-    width: 100%;
-}
+    .ul {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--azul-claro);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease;
+        z-index: 2000;
+    }
 
-/* Garante que a lista ocupe 100% do container pai */
-.lista-consultas {
-    width: 100%;
-}
-.secao-pacientes .container-flex-col input {
-    width: 600px;
-    padding: 15px;
-    border-radius: 15px;
-    border: 0.5px solid rgba(0, 0, 0, 0.178);
-    outline: none;
-    color: #00000098;
-    background-color: #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    margin: 10px;
-}
+    .ul.ativo {
+        left: 0;
+    }
 
-main.secao-pacientes {
-    display: flex ;
-    flex-direction: column ; 
-    align-items: center ;
-    justify-content: flex-start ;
-    width: 100%;
-}
+    .ul li {
+        margin: 20px 0;
+    }
 
-/* Garante que o container interno ocupe a largura correta */
-.container-flex-col {
-    width: 95%;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Mantém o eixo centralizado */
-}
+    .btn-login {
+        display: none;
+    }
+    .mensagem {
+        padding: 40px 20px;
+    }
 
-/* Alinhamento do Título */
-.container-flex-col h2 {
-    text-align: left; /* Ou center, se preferir no meio */
-    margin-top: 20px;
-    width: 100%;
-    color: var(--azul-claro);
-}
+    .mensagem h1 {
+        font-size: 28px;
+    }
+    .header-lista input {
+        width: 90%;
+        font-size: 14px;
+    }
+    .grid-pacientes {
+        grid-template-columns: 1fr; 
+        padding: 0 15px;
+    }
 
-/* Garante que a lista ocupe 100% do container pai */
-/* Container Principal */
-.header-lista {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;    /* Centraliza os itens (h2 e input) horizontalmente */
-    justify-content: center;
-    text-align: center;     /* Centraliza o texto dentro do h2 */
-    gap: 15px;
-    margin-bottom: 30px;
-}
-.header-lista input {
-    width: 100%;
-    max-width: 1000px; /* AQUI você define o tamanho final. Coloquei 1000px para ficar bem largo */
-    padding: 15px;
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    outline: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    margin: 0; 
-    display: block;
-}
-.header-lista h2 {
-    width: 100%;
-    text-align: center !important; /* O !important garante que vença alinhamentos à esquerda */
-    margin: 20px 0;
-    color: var(--azul-escuro);
-}
-/* Grid de Cards */
-.grid-pacientes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
-    width: 100%;
-}
+    .card-paciente {
+        width: 100%;
+    }
 
-/* Estilo do Card */
-.card-paciente {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid #eee;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-paciente:hover{
-    transform: scale(1.05);
-    transition: 0.3;
-}
+    .card-paciente:hover {
+        transform: none; 
+    }
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
 
+    footer .container ul {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .mobile-only {
+        display: block;
+    }
 
-.card-info h3 {
-    color: var(--azul-escuro);
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-.card-info p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.card-info span {
-    font-weight: 600;
-    color: var(--azul-claro);
-}
-
-/* Ações dentro do Card */
-.card-acoes {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.btn-ver {
-    background-color: var(--azul-claro);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.botoes-mini {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-editar-mini, .btn-excluir-mini {
-    flex: 1;
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-}
-
-.btn-editar-mini {
-    background-color: var(--azul-clarissimo);
-    color: var(--azul-escuro);
-}
-
-.btn-excluir-mini {
-    background-color: #ffe5e5;
-    color: #a02424;
-}
-
-.btn-excluir-mini:hover {
-    background-color: #a02424;
-    color: white;
-}
-input {
-    display: block;      /* Garante que ele se comporte como um bloco */
-    margin: 20px auto;   /* 20px em cima/baixo e AUTO nas laterais centraliza */
-    width: 100%;
-    max-width: 600px;    /* Limita o tamanho */
-}
-.ul .item-nav:hover{
-    background-color: white;
-    border-radius: 5px;
-    color: var(--azul-escuro);
-    width: 30px;
-    font-size: 15px; 
-    padding: 10px;
-    transition: 0.3s;
+    .ul li.mobile-only a {
+        font-weight: 600;
+        color: var(--azul-clarissimo);
+    }
+    .btn-login {
+        display: none !important;
+    }
 }

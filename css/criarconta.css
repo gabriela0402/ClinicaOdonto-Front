@@ -8,8 +8,11 @@
     list-style: none;
 }
 
-body{
+body {
     font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 :root {
@@ -18,12 +21,7 @@ body{
     --azul-clarissimo: #c8d9e6;
 }
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
+/* Nav */
 nav {
     position: fixed;
     background-color: var(--azul-claro);
@@ -35,7 +33,12 @@ nav {
 nav a {
     color: white;
 }
-
+.voltar:hover{
+    color: var(--azul-escuro);
+    transition: 0.3s;
+}
+/* Final nav */
+/* Main */
 main {
     flex: 1;
     display: flex;
@@ -61,7 +64,7 @@ main .container .btn-enviar {
     margin-top: 20px;
     width: 100px;
     cursor: pointer;
-    align-self: center; /* Centraliza apenas o botão dentro da coluna do form */
+    align-self: center; 
 }
 
 main .mensagem-entrar{
@@ -142,8 +145,6 @@ main .container .form-entrar p{
     font-size: 15px;
 }
 
-
-/* Estilo do Seletor de Abas */
 .seletor-tipo {
     display: flex;
     border: 2px solid var(--azul-claro);
@@ -175,10 +176,7 @@ form {
     display: flex;
     flex-direction: column;
 }
-.voltar:hover{
-    color: var(--azul-escuro);
-    transition: 0.3s;
-}
+
 main .container .btn-entrar:hover {
     background-color: var(--azul-escuro); 
     border-color: var(--azul-escuro);
@@ -194,8 +192,14 @@ main .container .btn-enviar:hover{
     transition: 0.3s;
 }
 .btn-entrar a {
-    text-decoration: none;
-    color: inherit; 
+    color: var(--azul-escuro); 
     display: block;
     width: 100%;
+}
+/* Final main */
+/* Responsividade */
+@media(max-width: 960px) {
+    input{
+        width: 200px;
+    }
 }
