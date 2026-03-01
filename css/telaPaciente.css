@@ -69,6 +69,15 @@ nav {
 .menu-icon img {
     width: 35px;
 }
+.ul .item-nav:hover{
+    background-color: white;
+    border-radius: 5px;
+    color: var(--azul-escuro);
+    width: 30px;
+    font-size: 15px; 
+    padding: 10px;
+    transition: 0.3s;
+}
 /* Final nav */
 /* Seção mensagem */
 .mensagem {
@@ -213,7 +222,6 @@ footer .container ul{
     text-align: center;
 }
 footer .container h3{
-    margin-left: 10px;
     margin-bottom: 16px;
     font-weight: 600;
 }

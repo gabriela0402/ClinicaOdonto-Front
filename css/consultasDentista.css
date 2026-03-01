@@ -130,7 +130,7 @@ input {
 
 .consulta-item {
     background-color: white;
-    border: 0.5px solid var(--azul-escuro);
+    border: 0.3px solid var(--azul-escuro);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -138,7 +138,8 @@ input {
 }
 .consulta-item:hover{
     transform: scale(1.04);
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(252, 252, 252);
+    border: 0.5px solid var(--azul-clarissimo);
 }
 .consulta-item summary {
     padding: 20px;
@@ -221,7 +222,6 @@ footer .container ul{
     text-align: center;
 }
 footer .container h3{
-    margin-left: 10px;
     margin-bottom: 16px;
     font-weight: 600;
 }

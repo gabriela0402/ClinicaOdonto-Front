@@ -13,8 +13,9 @@
     --azul-clarissimo: #c8d9e6;
 }
 
-body{
+body {
     font-family: "Poppins", sans-serif;
+    padding-top: 80px; 
 }
 html{
     scroll-behavior: smooth;
@@ -43,13 +44,12 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: var(--azul-claro);
-    padding: 0 5%;
+    padding: 0 5%; 
     height: 80px;
     border-radius: 0 0 0 50px;
 }
-
 .logo a {
-    font-size: 24px;
+    font-size: 30px; 
     font-weight: bold;
     color: white;
 }
@@ -60,12 +60,12 @@ nav {
 }
 
 .ul li {
-    margin: 0 15px;
+    margin: 0 20px; 
 }
 
 .ul li a {
+    font-size: 15px; 
     color: white;
-    transition: 0.3s;
 }
 .ul .item-nav:hover{
     background-color: white;
@@ -90,7 +90,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: flex-end; 
-    min-width: 300px;       
+    min-width: auto; 
 }
 
 .btn-config {
@@ -122,21 +122,28 @@ main {
 main .container {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     margin: 0 auto;
     min-height: 70vh;     
-    gap: 50px;        
+    gap: 50px; 
+    width: 100%; 
 }
 
 .main-text {
-    width: auto;          
-    max-width: 600px;    
+    width: 100%;     
+    max-width: 800px; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.main-text div{
+.main-text div {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
+    width: 100%; 
 }
 h1{
     font-size: 50px;
@@ -169,7 +176,6 @@ footer .container ul{
     text-align: center;
 }
 footer .container h3{
-    margin-left: 10px;
     margin-bottom: 16px;
     font-weight: 600;
 }
