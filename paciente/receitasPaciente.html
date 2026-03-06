@@ -15,12 +15,13 @@
                 <a href="index.html">Odonto Excellence</a>
             </div>
             <ul class="ul">
-                <li><a class="item-nav" href="inicioPaciente.html">Inicio</a></li>
-                <li><a class="item-nav" href="consultasPaciente.html">Consultas</a></li>
-                <li><a class="item-nav" href="receitasPaciente.html">Receitas</a></li>
-                <li class="mobile-only"><a class="item-nav" href="../paciente/configPaciente.html">Configurações</a>
-                </li>
-            </ul>
+                    <li><a class="item-nav" href="inicioPaciente.html">Inicio</a></li>
+                    <li><a class="item-nav" href="consultasPaciente.html">Consultas</a></li>
+                    <li><a class="item-nav" href="criarConsulta.html">Criar Consulta</a></li>
+                    <li><a class="item-nav" href="receitasPaciente.html">Receitas</a></li>
+                    <li class="mobile-only"><a class="item-nav" href="../paciente/configPaciente.html">Configurações</a>
+                    </li>
+                </ul>
             <div class="btn-login">
                 <a href="../paciente/configPaciente.html">
                     <img class="btn-config" src="../img/configuracao.png" alt="Configurações">
@@ -38,32 +39,12 @@
         </div>
     </section>
     <main>
+        <p id="loading">Carregando...</p>
         <div class="lista-consultas">
-            <input type="text" placeholder="Procure receitas pelo ID do paciente">
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">Consulta 1 - 23/02/2026</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Dentista:</strong> João Silva dos Santos</p>
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Prescrição:</strong> Lorem ipsum do</p>
-                    <p><strong>Remédio:</strong>rmeédifow</p>
+            <input type="text" id="input-busca-paciente-id" placeholder="Procure receitas pelo seu ID de paciente">
 
-                </div>
-            </details>
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">Consulta 2 - 23/02/2026</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Dentista:</strong> João Silva dos Santos</p>
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Prescrição:</strong> Lorem ipsum do</p>
-                    <p><strong>Remédio:</strong>rmeédifow</p>
-                </div>
-            </details>
-
+            <div id="lista-cards-receitas-paciente">
+            </div>
         </div>
     </main>
 
@@ -106,6 +87,7 @@
             </ul>
         </div>
     </footer>
+    <script src="../js/conexao.js"></script>
     <script src="../js/consultasPaciente.js"></script>
 </body>
 

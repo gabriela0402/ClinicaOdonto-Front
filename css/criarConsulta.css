@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --azul-claro: #567c8d;
+    --azul-escuro: #2f4156;    
+    --azul-clarissimo: #c8d9e6;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+/* Nav */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--azul-claro);
+    padding: 20px;
+    border-radius: 0 0 50px 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+}
+.voltar:hover{
+    color: var(--azul-escuro);
+}
+/* Final nav */
+/* Main */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 120px 20px 40px 20px;
+    width: 100%;
+}
+
+.form-entrar {
+    width: 100%;
+}
+
+h1 {
+    color: var(--azul-escuro);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    color: grey;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    outline: none;
+    font-family: inherit;
+}
+
+.btns-container {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btns-container a {
+    flex: 1;
+    display: flex;
+}
+
+.btn-enviar, .btn-sair, .excluir-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-enviar {
+    background-color: var(--azul-claro);
+    color: white;
+}
+.btn-enviar:hover{
+    background-color: var(--azul-clarissimo);
+    color: var(--azul-escuro);
+    transition: 0.4s;
+}
+
+.btn-sair {
+    background-color: white;
+    border: 1px solid var(--azul-escuro);
+    color: var(--azul-escuro);
+}
+.btn-sair:hover{
+    background-color: var(--azul-escuro);
+    color: white;
+    transition: 0.4s;
+}
+
+.excluir-btn {
+    background-color: var(--azul-claro);
+    color: white;
+    margin-top: 15px;
+}
+.excluir-btn:hover{
+    background-color: var(--azul-escuro);
+    color: rgb(255, 255, 255);
+    transition: 0.4s;
+}
+/* Final Main */
+/* Responsividade */
+@media (max-width: 960px) {
+
+    .btns-container {
+        flex-direction: column;
+    }
+
+    main {
+        padding-top: 100px;
+    }
+}

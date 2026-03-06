@@ -220,6 +220,9 @@ main {
 .mobile-only {
     display: none;
 }
+.hide{
+    display: none;
+}
 /* Final main */
 /* Footer */
 footer{

@@ -24,33 +24,45 @@
                     <button type="button" class="btn-opcao" id="btn-dentista">Dentista</button>
                 </div>
 
-                <form action="" id="form-paciente">
-                    <p>Nome Completo:</p><input type="text" placeholder="Digite aqui">
-                    <p>CPF:</p><input type="number" placeholder="Digite aqui">
-                    <p>Telefone</p><input type="number" placeholder="Digite aqui">
-                    <p>Email:</p><input type="email" placeholder="Digite aqui">
-                    <p>Senha:</p><input type="password" placeholder="Digite aqui">
+                <form id="form-paciente">
+                    <p>Nome Completo:</p>
+                    <input type="text" id="nome" placeholder="Digite aqui" required>
+
+                    <p>CPF:</p>
+                    <input type="number" id="cpf" placeholder="Digite aqui" required>
+
+                    <p>Telefone</p>
+                    <input type="number" id="telefone" placeholder="Digite aqui" required>
+
+                    <p>Email:</p>
+                    <input type="email" id="email" placeholder="Digite aqui" required>
+
+                    <p>Senha:</p>
+                    <input type="password" id="senha" placeholder="Digite aqui" required>
+
                     <button type="submit" class="btn-enviar">Enviar</button>
                 </form>
 
-                <form action="" id="form-dentista" style="display: none;">
-                    <p>Nome Completo:</p><input type="text" placeholder="Digite aqui">
-                    <p>Especialização:</p><input type="text" placeholder="Digite aqui">
-                    <p>Telefone</p><input type="number" placeholder="Digite aqui">
-                    <p>Email:</p><input type="email" placeholder="Digite aqui">
-                    <p>Senha:</p><input type="password" placeholder="Digite aqui">
+                <form id="form-dentista" style="display: none;">
+                    <p>Nome Completo:</p><input type="text" id="nome-dentista" placeholder="Digite aqui" required>
+                    <p>Especialização:</p><input type="text" id="especializacao-dentista" placeholder="Digite aqui" required>
+                    <p>Telefone</p><input type="number" id="telefone-dentista" placeholder="Digite aqui" required>
+                    <p>Email:</p><input type="email" id="email-dentista" placeholder="Digite aqui" required>
+                    <p>Senha:</p><input type="password" id="senha-dentista" placeholder="Digite aqui" required>
                     <button type="submit" class="btn-enviar">Enviar</button>
                 </form>
             </div>
 
             <div class="mensagem-entrar">
                 <h2>Já tem conta?</h2>
-                <p>Entre na sua conta para continuar seu acompanhamento odontológico e acessar informações sobre sua saúde bucal.</p>
+                <p>Entre na sua conta para continuar seu acompanhamento odontológico e acessar informações sobre sua
+                    saúde bucal.</p>
                 <button class="btn-entrar"><a href="login.html">Entrar</a></button>
             </div>
         </div>
     </main>
 </body>
+<script src="js/conexao.js"></script>
 <script src="js/script.js"></script>
 
 </html>

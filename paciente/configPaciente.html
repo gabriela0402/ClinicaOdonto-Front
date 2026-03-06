@@ -18,12 +18,27 @@
         <div class="container">
             <div class="form-entrar">
                 <h1>Editar Conta</h1>
-                <form action="" id="form-paciente">
-                    <p>Nome Completo:</p><input type="text" placeholder="Digite aqui">
-                    <p>CPF:</p><input type="number" placeholder="Digite aqui">
-                    <p>Telefone</p><input type="number" placeholder="Digite aqui">
-                    <p>Email:</p><input type="email" placeholder="Digite aqui">
-                    <p>Senha:</p><input type="password" placeholder="Digite aqui">
+                <form action="" id="form-editar-paciente">
+                    <input type="hidden" id="edit-id">
+
+                    <p>ID do seu cadastro:</p>
+                    <input type="number" id="edit-id-input" placeholder="Digite seu ID para confirmar">
+
+                    <p>Nome Completo:</p>
+                    <input type="text" id="edit-nome" placeholder="Digite seu novo nome">
+
+                    <p>CPF:</p>
+                    <input type="number" id="edit-cpf" placeholder="Digite seu CPF">
+
+                    <p>Telefone</p>
+                    <input type="number" id="edit-telefone" placeholder="Digite seu telefone">
+
+                    <p>Email:</p>
+                    <input type="email" id="edit-email" placeholder="Digite seu e-mail">
+
+                    <p>Senha:</p>
+                    <input type="password" id="edit-senha" placeholder="Digite sua senha">
+
                     <div class="btns-container">
                         <button type="submit" class="btn-enviar">Editar</button>
                         <a href="../index.html">
@@ -32,12 +47,13 @@
                     </div>
 
                     <div class="btns-container">
-                        <button class="excluir-btn">Excluir Conta</button>
+                        <button type="button" id="btn-excluir-conta" class="excluir-btn">Excluir Conta</button>
                     </div>
                 </form>
             </div>
         </div>
     </main>
+    <script src="../js/conexao.js"></script>
 </body>
 
 </html>

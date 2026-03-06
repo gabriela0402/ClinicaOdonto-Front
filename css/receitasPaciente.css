@@ -177,6 +177,9 @@ input {
 .mobile-only {
     display: none;
 }
+.hide{
+    display: none;
+}
 /* FInal main */
 /* Footer */
 footer{

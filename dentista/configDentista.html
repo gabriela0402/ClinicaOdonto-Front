@@ -18,12 +18,25 @@
         <div class="container">
             <div class="form-entrar">
                 <h1>Editar Conta</h1>
-                <form action="" id="form-paciente">
-                    <p>Nome Completo:</p><input type="text" placeholder="Digite aqui">
-                    <p>Especialização:</p><input type="text" placeholder="Digite aqui">
-                    <p>Telefone</p><input type="number" placeholder="Digite aqui">
-                    <p>Email:</p><input type="email" placeholder="Digite aqui">
-                    <p>Senha:</p><input type="password" placeholder="Digite aqui">
+                <form action="" id="form-editar-dentista">
+                    <p>Id:</p>
+                    <input type="text" id="edit-id-input" placeholder="Digite aqui">
+                    
+                    <p>Nome Completo:</p>
+                    <input type="text" id="edit-nome" placeholder="Digite aqui">
+
+                    <p>Especialização:</p>
+                    <input type="text" id="edit-esp" placeholder="Digite aqui">
+
+                    <p>Telefone</p>
+                    <input type="number" id="edit-telefone" placeholder="Digite aqui">
+
+                    <p>Email:</p>
+                    <input type="email" id="edit-email" placeholder="Digite aqui">
+
+                    <p>Senha:</p>
+                    <input type="password" id="edit-senha" placeholder="Digite aqui">
+
                     <div class="btns-container">
                         <button type="submit" class="btn-enviar">Editar</button>
                         <a href="../index.html">
@@ -38,6 +51,7 @@
             </div>
         </div>
     </main>
+    <script src="../js/conexao.js"></script>
 </body>
 
 </html>

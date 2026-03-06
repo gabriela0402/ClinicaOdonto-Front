@@ -18,6 +18,7 @@
             <ul class="ul">
                 <li><a class="item-nav" href="inicioPaciente.html">Inicio</a></li>
                 <li><a class="item-nav" href="consultasPaciente.html">Consultas</a></li>
+                <li><a class="item-nav" href="criarConsulta.html">Criar Consulta</a></li>
                 <li><a class="item-nav" href="receitasPaciente.html">Receitas</a></li>
                 <li class="mobile-only"><a class="item-nav" href="../paciente/configPaciente.html">Configurações</a>
                 </li>
@@ -40,38 +41,15 @@
         </div>
     </section>
     <main>
-        <div class="lista-consultas">
-            <input type="text" placeholder="Procure consultas pelo ID do paciente">
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">25/10/2023 - 14:30</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Dentista:</strong> João Silva dos Santos</p>
-                    <p><strong>Sintoma:</strong> Avaliação Geral / Limpeza</p>
-                    <p><strong>Situação:</strong> Aceito</p>
-                    <button class="btn-excluir">Excluir</button>
-                </div>
-            </details>
-
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">25/10/2023 - 15:30</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Dentista:</strong> João Silva dos Santos</p>
-                    <p><strong>Sintoma:</strong> Avaliação Geral / Limpeza</p>
-                    <p><strong>Situação:</strong>Negado</p>
-                    <p><strong>Motivo:</strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nesciunt
-                        excepturi nulla reprehenderit harum pariatur vel nobis, libero impedit ipsum blanditiis facilis
-                        distinctio repudiandae, laudantium eaque unde quos dolorem! Quos.</p>
-                    <button class="btn-excluir">Excluir</button>
-                </div>
-            </details>
-        </div>
-    </main>
+    <p id="loading">Carregando...</p>
+    <div class="lista-consultas">
+        <input type="text" id="input-busca-consulta" placeholder="Procure consulta pelo ID da consulta">
+        <input type="text" id="input-busca-paciente-id" placeholder="Procure consultas pelo ID do paciente">
+        
+        <div id="lista-cards-consultas">
+            </div>
+    </div>
+</main>
 
     <footer>
         <div class="container">
@@ -112,6 +90,7 @@
             </ul>
         </div>
     </footer>
+    <script src="../js/conexao.js"></script>
     <script src="../js/consultasPaciente.js"></script>
 </body>
 

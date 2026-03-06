@@ -156,7 +156,10 @@ h1{
     background-color: var(--azul-claro);
     color: white;
 }
-/* Final main */
+.hide{
+    display: none;
+}
+ /* Final main */ 
 /* sobre */
 .features {
     display: flex;

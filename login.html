@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
     <title>Odonto Excellence</title>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="index.html" class="voltar">Voltar</a>
-        </nav>                
-                 
+        </nav>
+
         </nav>
     </header>
     <main>
         <div class="container">
             <div class="mensagem-entrar">
                 <h2>Não tem conta?</h2>
-                <p>Cadastre-se para acessar nossa plataforma exclusiva, gerenciar seus horários e receber um atendimento personalizado antes mesmo de chegar ao consultório.</p>
-                <button class="btn-entrar"><a href="criarconta.html" >Criar Conta</a></button>
+                <p>Cadastre-se para acessar nossa plataforma exclusiva, gerenciar seus horários e receber um atendimento
+                    personalizado antes mesmo de chegar ao consultório.</p>
+                <button class="btn-entrar"><a href="criarconta.html">Criar Conta</a></button>
             </div>
-        
+
             <div class="form-entrar">
                 <h1>Entre na sua Conta</h1>
-                <p  class="subtexto">Preencha os seus dados</p>
-                <form action="">
+                <p class="subtexto">Preencha os seus dados</p>
+                <form id="formCadastro">
+                    <p>Nome Completo:</p>
+                    <input type="text" id="nome" required>
+
+                    <p>Telefone:</p>
+                    <input type="text" id="telefone" required>
+
                     <p>Email:</p>
-                    <input type="email" name="" id="" placeholder="Digite aqui">
+                    <input type="email" id="email" required>
+
                     <p>Senha:</p>
-                    <input type="password" name="" id="" placeholder="Digite aqui">
-                    <button class="btn-enviar">Enviar</button>
+                    <input type="password" id="senha" required>
+
+                    <button type="submit" class="btn-enviar">Criar Conta</button>
                 </form>
             </div>
         </div>
     </main>
-    
+    <script src="js/conexao.js"></script>
 </body>
+
 </html>

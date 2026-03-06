@@ -185,7 +185,10 @@ input {
     transition: 0.3s;
 }
 .mobile-only {
-    display: none; /* Esconde o texto no desktop */
+    display: none;
+}
+.hide{
+    display: none;
 }
 /* Final main */
 /* Footer */

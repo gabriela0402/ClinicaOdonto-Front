@@ -39,35 +39,15 @@
         </div>
     </section>
     <main>
-        <div class="lista-consultas">
-            <input type="text" placeholder="Procure receitas pelo ID do dentista">
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">Consulta 1 - 23/02/2026</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Prescrição:</strong> Lorem ipsum do</p>
-                    <p><strong>Remédio:</strong>rmeédifow</p>
-                    <button class="btn-editar">Editar</button>
-                    <button class="btn-excluir">Excluir</button>
-                </div>
-            </details>
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">Consulta 2 - 24/02/2026</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Prescrição:</strong> Lorem ipsum do</p>
-                    <p><strong>Remédio:</strong>rmeédifow</p>
-                    <button class="btn-editar">Editar</button>
-                    <button class="btn-excluir">Excluir</button>
-                </div>
-            </details>
-
-        </div>
-    </main>
+    <p id="loading">Carregando...</p>
+    <div class="lista-consultas">
+        <input type="text" id="input-busca-receita" placeholder="Procure receita pelo ID da receita">
+        <input type="text" id="input-busca-dentista-id" placeholder="Procure receitas pelo ID do dentista">
+        
+        <div id="lista-cards-receitas">
+            </div>
+    </div>
+</main>
 
     <footer>
         <div class="container">
@@ -110,6 +90,7 @@
             </ul>
         </div>
     </footer>
+    <script src="../js/conexao.js"></script>
     <script src="../js/receitasDentistas.js"></script>
 </body>
 

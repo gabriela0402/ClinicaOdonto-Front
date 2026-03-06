@@ -36,36 +36,18 @@
     <section class="mensagem">
         <div class="container">
             <h1>Verifique suas consultas!</h1>
-            <p>Acompanhe seus horários marcados e o histórico de consultas de seus pacientes em um só lugar.</p>
+            <p>Acompanhe todas as consultas agendadas e busque por consultas especídficas pelo id em um só lugar.</p>
 
         </div>
     </section>
     <main>
+        <p id="loading">Carregando...</p>
         <div class="lista-consultas">
-            <input type="text" placeholder="Procure consultas pelo ID do dentista">
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">25/10/2023 - 14:30</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> João Silva dos Santos</p>
-                    <p><strong>Sintoma:</strong> Avaliação Geral / Limpeza</p>
-                    <button class="btn-editar">Aceitar</button>
-                    <button class="btn-excluir">Recusar</button>
-                </div>
-            </details>
+            <input type="text" id="input-busca-consulta" placeholder="Procure consultas pelo ID da consulta">
+            <input type="text" id="input-busca-dentista-id" placeholder="Procure consultas pelo ID do dentista">
 
-            <details class="consulta-item">
-                <summary>
-                    <span class="data-hora">25/10/2023 - 15:30</span>
-                </summary>
-                <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> Maria Oliveira</p>
-                    <p><strong>Sintoma:</strong> Manutenção de Aparelho</p>
-                    <button class="btn-editar">Aceitar</button>
-                    <button class="btn-excluir">Recusar</button>
-                </div>
-            </details>
+            <div id="lista-cards-consultas">
+            </div>
         </div>
     </main>
 
@@ -109,6 +91,7 @@
             </ul>
         </div>
     </footer>
+    <script src="../js/conexao.js"></script>
     <script src="../js/consultasDentista.js"></script>
 </body>
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/criarConsulta.css">
+    <title>Odonto Excellence</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="voltar" href="../paciente/inicioPaciente.html">Voltar</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="form-entrar">
+                <h1>Criar Consulta</h1>
+                <form id="form-criar-consulta">
+                    <p>Id do Paciente:</p>
+                    <input type="number" id="consulta-paciente-id" placeholder="Ex: 1" required>
+
+                    <p>Id do Dentista:</p>
+                    <input type="number" id="consulta-dentista-id" placeholder="Ex: 1" required>
+
+                    <p>Data e horário:</p>
+                    <input type="datetime-local" id="consulta-data" required>
+
+                    <p>Sintoma:</p>
+                    <input type="text" id="consulta-sintoma" placeholder="O que está sentindo?">
+
+                    <p>Tratamento:</p>
+                    <input type="text" id="consulta-tratamento" placeholder="Ex: Limpeza">
+
+                    <p>Procedimento:</p>
+                    <input type="text" id="consulta-procedimento" placeholder="Ex: Extração">
+
+                    <div class="btns-container">
+                        <button type="submit" class="excluir-btn">Criar Consulta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../js/conexao.js"></script>
+</body>
+
+</html>
