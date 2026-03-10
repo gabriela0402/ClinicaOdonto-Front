@@ -1,4 +1,3 @@
-// Este é o mesmo código usado anteriormente
 const menuIcon = document.querySelector('.menu-icon');
 const menuIconImg = document.querySelector('.menu-icon img');
 const ul = document.querySelector('.ul');

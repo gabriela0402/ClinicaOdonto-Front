@@ -35,7 +35,6 @@ function configurarBuscaGeral() {
     const inputBusca = document.querySelector("#input-busca");
     if (!inputBusca) return;
 
-    // Removemos qualquer event listener antigo para não duplicar
     inputBusca.replaceWith(inputBusca.cloneNode(true));
     const novoInput = document.querySelector("#input-busca");
 
@@ -44,11 +43,9 @@ function configurarBuscaGeral() {
             event.preventDefault();
 
             const valorBusca = novoInput.value.trim();
-            // Pega todos os cards (Pacientes ou Dentistas usam a mesma classe no seu código)
             const cards = document.querySelectorAll(".card-paciente");
 
             cards.forEach(card => {
-                // Procura o span de ID independente da classe ser de paciente ou dentista
                 const spanId = card.querySelector(".paciente-id-valor, .dentista-id-valor");
 
                 if (spanId) {
@@ -112,8 +109,7 @@ async function ListarDentistas() {
     try {
         const response = await fetch(url_listarDentista);
         const data = await response.json();
-        const grid = document.querySelector(".grid-pacientes"); // O container no seu HTML
-
+        const grid = document.querySelector(".grid-pacientes"); 
         if (loadingElement) loadingElement.classList.add("hide");
 
         if (!grid) return;
@@ -434,12 +430,11 @@ async function ListarConsultas() {
         const consultas = data.dados;
 
         consultas.forEach((consulta) => {
-            // ESSA LINHA ABAIXO É A QUE FALTAVA:
             const item = document.createElement("details");
             item.classList.add("consulta-item");
 
             const idConsulta = consulta.id;
-            const idUsuario = consulta.pacienteId || consulta.dentistaId; 
+            const idUsuario = consulta.pacienteId || consulta.dentistaId;
 
             item.innerHTML = `
                 <summary>
@@ -451,8 +446,7 @@ async function ListarConsultas() {
                     <p><strong>ID Consulta:</strong> #${idConsulta}</p>
                     <p><strong>Paciente:</strong> ${consulta.paciente?.nome || "---"} (ID: ${consulta.pacienteId || 'N/A'})</p>
                     <p><strong>Dentista:</strong> ${consulta.dentista?.nome || "---"}</p>
-                    <p><strong>Situação:</strong> ${consulta.status || "Pendente"}</p>
-                    <button class="btn-excluir" onclick="excluirConsulta(${idConsulta})">Excluir</button>
+                    
                 </div>
             `;
             containerCards.appendChild(item);
@@ -465,7 +459,6 @@ async function ListarConsultas() {
 //configurar busca da consulta
 function configurarBuscaConsultas() {
     const inputConsulta = document.querySelector("#input-busca-consulta");
-    // Seleciona o input independente se é ID de dentista ou paciente
     const inputIdUsuario = document.querySelector("#input-busca-dentista-id") || document.querySelector("#input-busca-paciente-id");
 
     const filtrar = (valor, classeAlvo) => {
@@ -498,7 +491,6 @@ function configurarBuscaConsultas() {
             if (e.key === "Enter") {
                 e.preventDefault();
                 inputConsulta.value = "";
-                // Usamos a classe de referência do usuário (dentista ou paciente)
                 filtrar(inputIdUsuario.value.trim(), ".usuario-id-ref");
             }
         });
@@ -508,15 +500,28 @@ function configurarBuscaConsultas() {
 //listar receitas Dentista (receitasDentista.html)
 async function ListarReceitas() {
     const containerCards = document.querySelector("#lista-cards-receitas");
+    const loadingElement = document.querySelector("#loading");
 
-    try {
+    try { 
         const response = await fetch(url_listarReceitas);
         const data = await response.json();
 
         if (loadingElement) loadingElement.classList.add("hide");
-        if (!containerCards) return;
 
-        containerCards.innerHTML = ""; 
+        if (!containerCards) {
+            console.error("Erro: Container #lista-cards-receitas não encontrado no HTML.");
+            return;
+        }
+
+        containerCards.innerHTML = "";
+
+        console.log("Dados recebidos da API:", data);
+
+        if (!data || data.status === false || !data.dados || !Array.isArray(data.dados)) {
+            console.warn("Nenhuma receita encontrada ou erro na API:", data?.mensagem);
+            containerCards.innerHTML = `<p class="aviso-vazio">${data?.mensagem || "Nenhuma receita disponível."}</p>`;
+            return;
+        }
 
         const receitas = data.dados;
 
@@ -524,37 +529,36 @@ async function ListarReceitas() {
             const item = document.createElement("details");
             item.classList.add("consulta-item");
 
-            const idReceita = receita.id || receita.Id;
-            
-            // Tenta pegar o ID do dentista de várias formas comuns em APIs C#
-            const idDentista = receita.consulta?.dentistaId || 
-                               receita.consulta?.dentista?.id || 
-                               receita.dentistaId || 
-                               "---";
+            const idReceita = receita.id || "---";
+            const idConsultaRef = receita.consultaId || "---";
+            const idDentistaReal = receita.dentistaId !== undefined ? receita.dentistaId : "---";
 
             item.innerHTML = `
                 <summary>
                     <span class="data-hora">Receita #${idReceita}</span>
                     <span class="receita-id-ref" style="display:none">${idReceita}</span>
-                    <span class="usuario-id-ref" style="display:none">${idDentista}</span>
+                    <span class="usuario-id-ref" style="display:none">${idDentistaReal}</span>
                 </summary>
                 <div class="consulta-conteudo">
-                    <p><strong>Paciente:</strong> ${receita.consulta?.paciente?.nome || "---"}</p>
-                    <p><strong>Dentista:</strong> ${receita.consulta?.dentista?.nome || "---"} (ID: ${idDentista})</p>
+                    <p><strong>ID Consulta:</strong> #${idConsultaRef}</p>
                     <p><strong>Remédio:</strong> ${receita.remedio || "Não informado"}</p>
                     <p><strong>Prescrição:</strong> ${receita.prescricao || "Não informado"}</p>
-                    <button class="btn-editar">Editar</button>
-                    <button class="btn-excluir" onclick="excluirReceita(${idReceita})">Excluir</button>
                 </div>
             `;
+
             containerCards.appendChild(item);
         });
-    } catch (error) {
-        console.error("Erro ao carregar receitas:", error);
+
+        console.log(`Sucesso: ${receitas.length} receitas renderizadas.`);
+
+    } catch (error) { 
+        console.error("Erro técnico ao carregar receitas:", error);
+        if (containerCards) {
+            containerCards.innerHTML = "<p>Erro ao conectar com o servidor. Tente novamente mais tarde.</p>";
+        }
     }
 }
 
-//configurar buscar receitas
 function configurarBuscaReceitasPaciente() {
     const inputBusca = document.querySelector("#input-busca-paciente-id");
     if (!inputBusca) return;
@@ -563,13 +567,11 @@ function configurarBuscaReceitasPaciente() {
         if (e.key === "Enter") {
             e.preventDefault();
             const valorBusca = inputBusca.value.trim();
-            
-            // Aqui chamamos a função que faz a nova requisição
+
             await BuscarReceitasPorPacienteId(valorBusca);
         }
     });
 }
-
 
 //listar receitas por id paciente
 async function ListarReceitasPaciente() {
@@ -602,19 +604,18 @@ async function ListarReceitasPaciente() {
         if (loading) loading.classList.add("hide");
     }
 }
+
 //configurar busca receita do id paciente
 async function BuscarReceitasPorPacienteId(idPaciente) {
     const containerCards = document.querySelector("#lista-cards-receitas-paciente");
     if (!containerCards) return;
 
-    // Se o campo estiver vazio e der Enter, recarrega a lista completa
     if (!idPaciente) {
         await ListarReceitasPaciente();
         return;
     }
 
     try {
-        // Usa o endpoint que você testou no Swagger
         const response = await fetch(`${BASE_RECEITA}/ListarReceitasPorPacienteId/${idPaciente}`);
         const data = await response.json();
         const receitas = data.dados || data;
@@ -626,7 +627,6 @@ async function BuscarReceitasPorPacienteId(idPaciente) {
             return;
         }
 
-        // Renderiza apenas os resultados filtrados pela API
         receitas.forEach((receita) => {
             const item = document.createElement("details");
             item.classList.add("consulta-item");
@@ -643,55 +643,71 @@ async function BuscarReceitasPorPacienteId(idPaciente) {
     }
 }
 
-//configurar calendario minimo
+function configurarBuscaReceitasPorDentista() {
+    const inputBusca = document.querySelector("#input-busca-dentista-id");
+
+    if (inputBusca) {
+        inputBusca.addEventListener("input", () => {
+            const valorDigitado = inputBusca.value.trim();
+            const cards = document.querySelectorAll(".consulta-item");
+
+            console.log("--- TESTE DE BUSCA ---");
+            console.log("Valor que você digitou:", valorDigitado);
+
+            cards.forEach(card => {
+                const idNoCard = card.querySelector(".usuario-id-ref")?.textContent.trim();
+                console.log("ID encontrado neste card:", idNoCard);
+
+                if (valorDigitado === "" || idNoCard === valorDigitado) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    }
+}
+
 function configurarCalendarioMinimo() {
     const inputData = document.querySelector("#consulta-data");
     if (inputData) {
         const agora = new Date();
-        // Ajuste para o fuso horário local (formato YYYY-MM-DDTHH:mm)
         agora.setMinutes(agora.getMinutes() - agora.getTimezoneOffset());
         const dataMinima = agora.toISOString().slice(0, 16);
         inputData.min = dataMinima;
         console.log("Data mínima do calendário definida para:", dataMinima);
     }
 }
-
-//criar consulta (criarConsulta.html)
+//criar consultas 
 async function CriarConsulta(event) {
     event.preventDefault();
 
-    const inputData = document.querySelector("#consulta-data").value; // Formato: 2023-10-27T14:30
+    const inputData = document.querySelector("#consulta-data").value;
     if (!inputData) {
         alert("Por favor, selecione uma data e horário.");
         return;
     }
-
-    // Criamos a data e adicionamos 10 minutos de folga para garantir
     let dataObjeto = new Date(inputData);
     dataObjeto.setMinutes(dataObjeto.getMinutes() + 10);
 
-    // IMPORTANTE: Não use toISOString(). 
-    // Vamos formatar manualmente para YYYY-MM-DDTHH:mm:ss para manter o fuso local.
     const ano = dataObjeto.getFullYear();
     const mes = String(dataObjeto.getMonth() + 1).padStart(2, '0');
     const dia = String(dataObjeto.getDate()).padStart(2, '0');
     const hora = String(dataObjeto.getHours()).padStart(2, '0');
     const minuto = String(dataObjeto.getMinutes()).padStart(2, '0');
-    
+
     const dataFormatadaLocal = `${ano}-${mes}-${dia}T${hora}:${minuto}:00`;
 
     const corpo = {
-    pacienteId: parseInt(document.querySelector("#consulta-paciente-id").value),
-    dentistaId: parseInt(document.querySelector("#consulta-dentista-id").value),
-    
-    // ENVIE O VALOR PURO DO INPUT
-    // O .NET receberá exatamente o que você digitou no calendário
-    data_Horario: document.querySelector("#consulta-data").value, 
-    
-    sintoma: document.querySelector("#consulta-sintoma").value || "Nenhum",
-    tratamento: document.querySelector("#consulta-tratamento").value || "A definir",
-    procedimento: document.querySelector("#consulta-procedimento").value || "A definir"
-};
+        pacienteId: parseInt(document.querySelector("#consulta-paciente-id").value),
+        dentistaId: parseInt(document.querySelector("#consulta-dentista-id").value),
+
+        data_Horario: document.querySelector("#consulta-data").value,
+
+        sintoma: document.querySelector("#consulta-sintoma").value || "Nenhum",
+        tratamento: document.querySelector("#consulta-tratamento").value || "A definir",
+        procedimento: document.querySelector("#consulta-procedimento").value || "A definir"
+    };
 
     console.log("Enviando para API (Local Time):", dataFormatadaLocal);
 
@@ -706,7 +722,7 @@ async function CriarConsulta(event) {
 
         if (response.ok && result.status !== false) {
             alert("Consulta agendada com sucesso!");
-            window.location.href = "../paciente/inicioPaciente.html"; 
+            window.location.href = "../paciente/inicioPaciente.html";
         } else {
             alert("Erro da API: " + (result.mensagem || "Erro desconhecido"));
         }
@@ -715,34 +731,239 @@ async function CriarConsulta(event) {
         alert("Erro de conexão.");
     }
 }
-//Configurando formulários
-function configurarFormularios() {
-    const formP = document.querySelector("#form-paciente"); 
-    const formD = document.querySelector("#form-dentista");  
-    const formEditP = document.querySelector("#form-editar-paciente"); 
-    const formEditD = document.querySelector("#form-editar-dentista");
-    
-    // ESTA É A ÚNICA LINHA NOVA QUE VOCÊ ADICIONA:
-    const formCriarC = document.querySelector("#form-criar-consulta");
 
+//editar consultas
+async function EditarConsulta(event) {
+    event.preventDefault();
+
+    const dadosAtualizados = {
+        id: parseInt(document.querySelector("#edit-consulta-id").value),
+        pacienteId: parseInt(document.querySelector("#edit-paciente-id").value),
+        dentistaId: parseInt(document.querySelector("#edit-dentista-id").value),
+        data_Horario: document.querySelector("#edit-consulta-data").value,
+        sintoma: document.querySelector("#edit-consulta-sintoma").value || "Nenhum",
+        tratamento: document.querySelector("#edit-consulta-tratamento").value || "A definir",
+        procedimento: document.querySelector("#edit-consulta-procedimento").value || "A definir"
+    };
+
+    console.log("Dados que serão enviados para a API:", dadosAtualizados);
+
+    try {
+        const response = await fetch(url_editarConsulta, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dadosAtualizados)
+        });
+
+        const resultado = await response.json();
+
+        if (response.ok && resultado.status !== false) {
+            alert("Consulta atualizada com sucesso!");
+            window.location.href = "../paciente/inicioPaciente.html";
+        } else {
+            alert("Erro na API: " + (resultado.mensagem || "Erro ao atualizar"));
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+        alert("Não foi possível conectar à API.");
+    }
+}
+
+// Excluir Consulta
+async function excluirConsulta(id) {
+    if (!confirm("Deseja realmente cancelar/excluir esta consulta?")) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`${url_ExcluirConsulta}?idConsulta=${id}`, {
+            method: "DELETE"
+        });
+
+        const resultado = await response.json();
+
+        if (response.ok && resultado.status !== false) {
+            alert(resultado.mensagem || "Consulta excluída com sucesso!");
+            window.location.href = "../paciente/inicioPaciente.html";
+        } else {
+            alert("Erro ao excluir: " + (resultado.mensagem || "Verifique se o ID existe."));
+        }
+    } catch (error) {
+        console.error("Erro na requisição de exclusão:", error);
+        alert("Não foi possível conectar à API.");
+    }
+}
+
+function configurarBuscaReceitas() {
+    const inputBusca = document.querySelector("#input-busca-receita");
+
+    if (inputBusca) {
+        inputBusca.addEventListener("input", () => {
+            const valorBusca = inputBusca.value.trim();
+            const cards = document.querySelectorAll(".consulta-item");
+
+            cards.forEach(card => {
+                const idReceitaNoCard = card.querySelector(".receita-id-ref")?.textContent || "";
+
+                if (valorBusca === "" || idReceitaNoCard === valorBusca) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    }
+}
+
+//criar receita
+async function CriarReceita(event) {
+    event.preventDefault();
+
+    const corpo = {
+        consultaId: parseInt(document.querySelector("#receita-consulta-id").value),
+        prescricao: document.querySelector("#receita-prescricao").value,
+        remedio: document.querySelector("#receita-remedio").value
+    };
+
+    try {
+        const response = await fetch(url_criarReceita, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(corpo)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.status !== false) {
+            alert("Receita criada com sucesso!");
+            window.location.href = "../dentista/receitasDentista.html";
+        } else {
+            alert("Erro: " + (result.mensagem || "Erro ao criar receita"));
+        }
+    } catch (error) {
+        console.error("Erro:", error);
+        alert("Erro de conexão com a API.");
+    }
+}
+//Editar receita
+async function EditarReceita(event) {
+    event.preventDefault();
+
+    const corpo = {
+        id: parseInt(document.querySelector("#edit-receita-id").value),
+        consultaId: parseInt(document.querySelector("#edit-receita-consulta-id").value),
+        prescricao: document.querySelector("#edit-receita-prescricao").value,
+        remedio: document.querySelector("#edit-receita-remedio").value
+    };
+
+    try {
+        const response = await fetch(url_editarReceita, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(corpo)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.status !== false) {
+            alert("Receita atualizada com sucesso!");
+            window.location.href = "../dentista/receitasDentista.html";
+        } else {
+            alert("Erro: " + (result.mensagem || "Erro ao editar receita"));
+        }
+    } catch (error) {
+        console.error("Erro:", error);
+        alert("Erro de conexão com a API.");
+    }
+}
+
+// Excluir receita
+async function excluirReceita(id) {
+    if (!confirm("Deseja realmente excluir esta receita?")) return;
+
+    try {
+        const response = await fetch(`${url_excluirReceita}/${id}`, {
+            method: "DELETE"
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.status !== false) {
+            alert("Receita excluída com sucesso!");
+            window.location.href = "../dentista/receitasDentista.html";
+        } else {
+            alert("Erro: " + (result.mensagem || "Não foi possível excluir."));
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+        alert("Erro ao conectar na API.");
+    }
+}
+function configurarFormularios() {
+    const formP = document.querySelector("#form-paciente");
+    const formD = document.querySelector("#form-dentista");
+    const formEditP = document.querySelector("#form-editar-paciente");
+    const formEditD = document.querySelector("#form-editar-dentista");
+    const formEditarC = document.querySelector("#form-editar-consulta");
+    const formCriarC = document.querySelector("#form-criar-consulta");
+    const formReceita = document.querySelector("#form-criar-receita");
+    const formEditR = document.querySelector("#form-editar-receita");
+    const btnExcluirContaP = document.querySelector("#btn-excluir-conta");
+    const btnExcluirContaD = document.querySelector("#btn-excluir-conta-dentista");
+
+    if (btnExcluirContaD) {
+        btnExcluirContaD.addEventListener("click", ExcluirDentista);
+        console.log("Escuta de Excluir Dentista ativa");
+    }
+    if (btnExcluirContaP) {
+        btnExcluirContaP.addEventListener("click", ExcluirPaciente);
+        console.log("Escuta de Excluir Paciente ativa");
+    }
     if (formP) formP.addEventListener("submit", CriarPaciente);
     if (formD) formD.addEventListener("submit", CriarDentista);
     if (formEditP) formEditP.addEventListener("submit", EditarPaciente);
     if (formEditD) formEditD.addEventListener("submit", EditarDentista);
 
-    // E ESTE IF NOVO:
     if (formCriarC) {
         formCriarC.addEventListener("submit", CriarConsulta);
         console.log("Escuta de Criar Consulta ativa");
     }
+    if (formEditarC) {
+        formEditarC.addEventListener("submit", EditarConsulta);
+        console.log("Escuta de Editar Consulta ativa");
+    }
+
+    const btnExcluirC = document.querySelector("#btn-excluir-consulta");
+    if (btnExcluirC) {
+        btnExcluirC.addEventListener("click", () => {
+            const id = document.querySelector("#edit-consulta-id").value;
+            if (id) excluirConsulta(id);
+            else alert("Informe o ID da consulta para excluir.");
+        });
+    }
+    if (formReceita) {
+        formReceita.addEventListener("submit", CriarReceita);
+        console.log("Escuta de Criar Receita ativa");
+    }
+    if (formEditR) {
+        formEditR.addEventListener("submit", EditarReceita);
+        console.log("Escuta de Editar Receita ativa");
+    }
+
+    const btnExcluirR = document.querySelector("#btn-excluir-receita");
+    if (btnExcluirR) {
+        btnExcluirR.addEventListener("click", () => {
+            const id = document.querySelector("#edit-receita-id").value;
+            if (id) excluirReceita(id);
+            else alert("Informe o ID da receita para excluir.");
+        });
+    }
 }
 
-//Verificação
 async function iniciarTelaPD() {
     const path = window.location.pathname;
     console.log("Caminho completo detectado:", path);
 
-    // Usamos includes para evitar erros com pastas ou parâmetros na URL
     if (path.includes("telaDentistas.html")) {
         await ListarDentistas();
     }
@@ -760,25 +981,23 @@ async function iniciarTelaPD() {
     }
 }
 
-// Evento de carregamento principal (FORA de qualquer outra função)
 document.addEventListener("DOMContentLoaded", async () => {
     configurarFormularios();
-    
-    // 1. Primeiro carregamos os dados (importante usar await)
+
     await iniciarTelaPD();
 
-    // 2. Depois pegamos o caminho para ativar a busca correta
     const path = window.location.pathname.toLowerCase();
 
     if (path.includes("consultasdentista") || path.includes("consultaspaciente")) {
         configurarBuscaConsultas();
-    } 
+    }
     else if (path.includes("receitasdentista")) {
         configurarBuscaReceitas();
-    } 
+        configurarBuscaReceitasPorDentista();
+    }
     else if (path.includes("receitaspaciente")) {
-        configurarBuscaReceitasPaciente(); // Ativa a busca específica
-    }   
+        configurarBuscaReceitasPaciente();
+    }
     else {
         configurarBuscaGeral();
     }

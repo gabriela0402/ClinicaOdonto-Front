@@ -1,10 +1,8 @@
-// Mudamos o nome para btnP, btnD, formP e formD para evitar conflitos
 const btnP = document.getElementById('btn-paciente');
 const btnD = document.getElementById('btn-dentista');
 const formP = document.getElementById('form-paciente');
 const formD = document.getElementById('form-dentista');
 
-// Verifica se os botões existem na página antes de adicionar o evento
 if (btnP && btnD) {
     btnP.addEventListener('click', () => {
         btnP.classList.add('ativo');

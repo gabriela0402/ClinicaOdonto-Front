@@ -68,7 +68,6 @@ main .container .btn-enviar {
     width: 100px;
     cursor: pointer;
     align-self: center;
-    /* Centraliza apenas o botão dentro da coluna do form */
 }
 
 main .mensagem-entrar {
@@ -178,7 +177,7 @@ main .container .form-entrar p {
 }
 /* final main */
 
-
+/* Responsividade */
 @media(max-width: 960px) {
     input{
         width: 200px;

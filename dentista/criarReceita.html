@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/criarReceita.css">
+    <title>Odonto Excellence</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Odonto Excellence</a>
+            </div>
+
+            <ul class="ul">
+                <li><a class="item-nav" href="inicioDentista.html">Inicio</a></li>
+                <li><a class="item-nav" href="consultasDentista.html">Consultas</a></li>
+                <li><a class="item-nav" href="receitasDentista.html">Receitas</a></li>
+                <li><a class="item-nav" href="criarReceita.html">Criar Receita</a></li>
+                <li><a class="item-nav" href="editarReceita.html">Editar Receita</a></li>
+                <li><a class="item-nav" href="telaPacientes.html">Pacientes</a></li>
+                <li><a class="item-nav" href="telaDentistas.html">Dentistas</a></li>
+                <li class="mobile-only"><a class="item-nav" href="../dentista/configDentista.html">Configurações</a>
+                </li>
+            </ul>
+
+            <div class="btn-login">
+                <a href="../dentista/configDentista.html">
+                    <img class="btn-config" src="../img/configuracao.png" alt="Configurações">
+                </a>
+            </div>
+
+            <div class="menu-icon">
+                <img src="../img/menu.png" alt="Menu">
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="form-entrar">
+                <h1>Criar Receita</h1>
+                <form id="form-criar-receita">
+                    <p>Id da consulta:</p>
+                    <input type="number" id="receita-consulta-id" placeholder="Ex: 1" required>
+
+                    <p>Prescrição:</p>
+                    <input type="text" id="receita-prescricao" placeholder="Como tomar?">
+
+                    <p>Remédio:</p>
+                    <input type="text" id="receita-remedio" placeholder="Nome do remédio">
+
+                    <div class="btns-container">
+                        <button type="submit" class="excluir-btn">Criar Receita</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="../js/conexao.js"></script>
+    <script src="../js/inicioPaciente.js"></script>
+</body>
+
+</html>

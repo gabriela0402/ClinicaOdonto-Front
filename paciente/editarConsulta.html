@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/criarConsulta.css">
+    <link rel="stylesheet" href="../css/editarConsulta.css">
     <title>Odonto Excellence</title>
 </head>
 
@@ -14,7 +14,6 @@
             <div class="logo">
                 <a href="index.html">Odonto Excellence</a>
             </div>
-
             <ul class="ul">
                 <li><a class="item-nav" href="inicioPaciente.html">Inicio</a></li>
                 <li><a class="item-nav" href="consultasPaciente.html">Consultas</a></li>
@@ -38,34 +37,44 @@
     <main>
         <div class="container">
             <div class="form-entrar">
-                <h1>Criar Consulta</h1>
-                <form id="form-criar-consulta">
+                <h1>Editar Consulta</h1>
+
+                <form id="form-editar-consulta">
+                    <p>Id da Consulta:</p>
+                    <input type="number" id="edit-consulta-id" placeholder="Ex: 1" required>
+
                     <p>Id do Paciente:</p>
-                    <input type="number" id="consulta-paciente-id" placeholder="Ex: 1" required>
+                    <input type="number" id="edit-paciente-id" placeholder="Ex: 1" required>
 
                     <p>Id do Dentista:</p>
-                    <input type="number" id="consulta-dentista-id" placeholder="Ex: 1" required>
+                    <input type="number" id="edit-dentista-id" placeholder="Ex: 1" required>
 
                     <p>Data e horário:</p>
-                    <input type="datetime-local" id="consulta-data" required>
+                    <input type="datetime-local" id="edit-consulta-data" required>
 
                     <p>Sintoma:</p>
-                    <input type="text" id="consulta-sintoma" placeholder="O que está sentindo?">
+                    <input type="text" id="edit-consulta-sintoma" placeholder="O que está sentindo?">
 
                     <p>Tratamento:</p>
-                    <input type="text" id="consulta-tratamento" placeholder="Ex: Limpeza">
+                    <input type="text" id="edit-consulta-tratamento" placeholder="Ex: Limpeza">
 
                     <p>Procedimento:</p>
-                    <input type="text" id="consulta-procedimento" placeholder="Ex: Extração">
+                    <input type="text" id="edit-consulta-procedimento" placeholder="Ex: Extração">
 
                     <div class="btns-container">
-                        <button type="submit" class="excluir-btn">Criar Consulta</button>
+                        <button type="submit" class="btn-enviar">Editar</button>
+                        <a href="../index.html">
+                            <button type="button" class="btn-sair">Sair</button>
+                        </a>
+                    </div>
+
+                    <div class="btns-container">
+                        <button type="button" id="btn-excluir-consulta" class="excluir-btn">Excluir Consulta</button>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-    
     <script src="../js/conexao.js"></script>
     <script src="../js/inicioPaciente.js"></script>
 </body>
