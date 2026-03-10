@@ -1,60 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <title>Odonto Excellence - Cadastro</title>
+    <link rel="stylesheet" href="css/criarconta.css">
+    <title>Odonto Excellence</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="index.html" class="voltar">Voltar</a>
+            <a class="voltar" href="index.html">Voltar</a>
         </nav>
     </header>
     <main>
         <div class="container">
-            <div class="mensagem-entrar">
-                <h2>Não tem conta?</h2>
-                <p>Cadastre-se para acessar nossa plataforma exclusiva, gerenciar seus horários e receber um atendimento
-                    personalizado antes mesmo de chegar ao consultório.</p>
-                <button class="btn-entrar"><a href="criarconta.html">Criar Conta</a></button>
-            </div>
-
             <div class="form-entrar">
-                <h1>Entre na sua Conta</h1>
-                <p class="subtexto">Preencha os seus dados</p>
-                
-                <form id="formCadastro">
-                    <p>Eu sou:</p>
-                    <select id="tipoUsuario" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; font-family: inherit;">
-                        <option value="paciente">Paciente</option>
-                        <option value="dentista">Dentista</option>
-                    </select>
+                <h1>Criar Conta</h1>
 
+                <div class="seletor-tipo">
+                    <button type="button" class="btn-opcao ativo" id="btn-paciente">Paciente</button>
+                    <button type="button" class="btn-opcao" id="btn-dentista">Dentista</button>
+                </div>
+
+                <form id="form-paciente">
                     <p>Nome Completo:</p>
-                    <input type="text" id="nome" required>
+                    <input type="text" id="nome" placeholder="Digite aqui" required>
 
-                    <p>Telefone:</p>
-                    <input type="text" id="telefone" required>
+                    <p>CPF:</p>
+                    <input type="number" id="cpf" placeholder="Digite aqui" required>
+
+                    <p>Telefone</p>
+                    <input type="number" id="telefone" placeholder="Digite aqui" required>
 
                     <p>Email:</p>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" placeholder="Digite aqui" required>
 
                     <p>Senha:</p>
-                    <input type="password" id="senha" required>
+                    <input type="password" id="senha" placeholder="Digite aqui" required>
 
-                    <button type="submit" class="btn-enviar">Entrar</button>
+                    <button type="submit" class="btn-enviar">Enviar</button>
                 </form>
+
+                <form id="form-dentista" style="display: none;">
+                    <p>Nome Completo:</p><input type="text" id="nome-dentista" placeholder="Digite aqui" required>
+                    <p>Especialização:</p><input type="text" id="especializacao-dentista" placeholder="Digite aqui" required>
+                    <p>Telefone</p><input type="number" id="telefone-dentista" placeholder="Digite aqui" required>
+                    <p>Email:</p><input type="email" id="email-dentista" placeholder="Digite aqui" required>
+                    <p>Senha:</p><input type="password" id="senha-dentista" placeholder="Digite aqui" required>
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </form>
+            </div>
+
+            <div class="mensagem-entrar">
+                <h2>Já tem conta?</h2>
+                <p>Entre na sua conta para continuar seu acompanhamento odontológico e acessar informações sobre sua
+                    saúde bucal.</p>
+                <button class="btn-entrar"><a href="login.html">Entrar</a></button>
             </div>
         </div>
     </main>
-
-    <script src="js/conexao.js"></script>
-    <script src="js/criar.js"></script>
-    <script src="js/script.js"></script>
 </body>
+<script src="js/conexao.js"></script>
+<script src="js/script.js"></script>
 
 </html>

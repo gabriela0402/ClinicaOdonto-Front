@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
-    <title>Odonto Excellence</title>
+    <title>Odonto Excellence - Entrar</title>
 </head>
 
 <body>
@@ -13,39 +13,47 @@
         <nav>
             <a href="index.html" class="voltar">Voltar</a>
         </nav>
-
-        </nav>
     </header>
+
     <main>
         <div class="container">
             <div class="mensagem-entrar">
                 <h2>Não tem conta?</h2>
-                <p>Cadastre-se para acessar nossa plataforma exclusiva, gerenciar seus horários e receber um atendimento
-                    personalizado antes mesmo de chegar ao consultório.</p>
+                <p>Cadastre-se para acessar nossa plataforma exclusiva, gerenciar seus horários e receber um atendimento personalizado antes mesmo de chegar ao consultório.</p>
                 <button class="btn-entrar"><a href="criarconta.html">Criar Conta</a></button>
             </div>
 
             <div class="form-entrar">
                 <h1>Entre na sua Conta</h1>
                 <p class="subtexto">Preencha os seus dados</p>
-                <form id="formCadastro">
+                
+                <form id="formLogin">
                     <p>Nome Completo:</p>
-                    <input type="text" id="nome" required>
+                    <input type="text" id="nome" required placeholder="Digite seu nome">
 
                     <p>Telefone:</p>
-                    <input type="text" id="telefone" required>
+                    <input type="text" id="telefone" required placeholder="(00) 00000-0000">
 
                     <p>Email:</p>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" required placeholder="exemplo@email.com">
 
                     <p>Senha:</p>
-                    <input type="password" id="senha" required>
+                    <input type="password" id="senha" required placeholder="********">
+
+                    <p>Eu sou:</p>
+                    <select id="tipoUsuario" required style="width: 100%; max-width: 600px; padding: 15px; border-radius: 15px; margin: 10px; border: 0.5px solid rgba(0,0,0,0.178); background-color: white; font-family: 'Poppins', sans-serif;">
+                        <option value="" disabled selected>Selecione seu perfil</option>
+                        <option value="paciente">Paciente</option>
+                        <option value="dentista">Dentista</option>
+                    </select>
 
                     <button type="submit" class="btn-enviar">Entrar</button>
                 </form>
             </div>
         </div>
     </main>
+    
+    <script src="js/login.js"></script>
     <script src="js/conexao.js"></script>
 </body>
 
