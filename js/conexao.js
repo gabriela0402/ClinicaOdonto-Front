@@ -173,7 +173,7 @@ async function CriarPaciente(event) {
 
         if (response.ok) {
             alert("Paciente criado com sucesso!");
-            window.location.href = "login.html";
+            window.location.href = "paciente/inicioPaciente.html";
         } else {
             const erro = await response.json();
             alert("Erro na API: " + (erro.mensagem || "Verifique os campos"));
@@ -364,7 +364,7 @@ async function CriarDentista(event) {
 
         if (response.ok) {
             alert("Dentista cadastrado com sucesso!");
-            window.location.href = "login.html";
+            window.location.href = "dentista/inicioDentista.html";
         } else {
             const erro = await response.json();
             alert("Erro ao criar dentista: " + (erro.mensagem || "Verifique os dados"));
@@ -959,6 +959,28 @@ function configurarFormularios() {
         });
     }
 }
+function configurarTrocaDeAbas() {
+    const btnP = document.querySelector("#btn-paciente");
+    const btnD = document.querySelector("#btn-dentista");
+    const formP = document.querySelector("#form-paciente");
+    const formD = document.querySelector("#form-dentista");
+
+    if (btnP && btnD) {
+        btnP.addEventListener("click", () => {
+            btnP.classList.add("ativo");
+            btnD.classList.remove("ativo");
+            formP.style.display = "block";
+            formD.style.display = "none";
+        });
+
+        btnD.addEventListener("click", () => {
+            btnD.classList.add("ativo");
+            btnP.classList.remove("ativo");
+            formD.style.display = "block";
+            formP.style.display = "none";
+        });
+    }
+}
 
 async function iniciarTelaPD() {
     const path = window.location.pathname;
@@ -983,6 +1005,7 @@ async function iniciarTelaPD() {
 
 document.addEventListener("DOMContentLoaded", async () => {
     configurarFormularios();
+    configurarTrocaDeAbas();
 
     await iniciarTelaPD();
 
